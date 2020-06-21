@@ -16,8 +16,8 @@ export const NavbarPage = (props) => {
 			  <Navbar.Toggle aria-controls="basic-navbar-nav" />
 			  <Navbar.Collapse id="basic-navbar-nav">
 			    <Nav className="mr-auto">
-			      <Link className='nav-link' to='/articles'>Articles</Link>
-			      <Link className='nav-link' to='/auths'>Auths</Link>
+			      <Link className='nav-link' to='/articles'>Articulos</Link>
+			      <Link className='nav-link' to='/authors'>Autores</Link>
 			    </Nav>
 			    <Form inline>
 			      <FormControl type="text" placeholder="Search" className="mr-sm-2" />

@@ -22,7 +22,7 @@ export const ArticleUpdate = (props) => {
 				'X-CSRF-Token': token,
 				'Accept': 'application/json',
 			},
-			body: JSON.stringify({article: {...data, auth_id: 2}})
+			body: JSON.stringify({article: {...data, author_id: 2}})
 		})
 		await props.handleClose(false)
 		setUpdate(true)

@@ -10,25 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_024515) do
+ActiveRecord::Schema.define(version: 2020_06_21_003608) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "auth_id"
-    t.index ["auth_id"], name: "index_articles_on_auth_id"
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_articles_on_author_id"
     t.index ["title"], name: "index_articles_on_title"
   end
 
-  create_table "auths", force: :cascade do |t|
+  create_table "authors", force: :cascade do |t|
     t.string "name"
-    t.string "username"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "articles", "auths"
+  add_foreign_key "articles", "authors"
 end

@@ -9,22 +9,22 @@ export const Article = (props) => {
 	const { article_id } = useParams()
 
 	const [ article, setArticle ] = useState({})
-	const [ auth, setAuth ] = useState({})
+	const [ author, setAuthor ] = useState({})
 
 	const [ deleteArt, setDeleteArt ] = useState(false)
 
 	// BEGIN Modal
 	const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 	// END
 
 	useEffect(() => {
 		const getArticle = async () => {
 			const res = await fetch(`${API_URL}/articles/${article_id}`)
 			const data = await res.json()
-			await setArticle(data.data.article)
-			await setAuth(data.data.article.auth)
+			setArticle(data.data.article)
+			setAuthor(data.data.article.author)
 		}
 		getArticle()
 	},[article_id])
@@ -48,7 +48,7 @@ export const Article = (props) => {
 					<Card.Title>{ article.title }</Card.Title>
 					<Card.Text>{article.body}</Card.Text>
 					<p className='small text-muted'>{article.publishied}</p>
-					<p className='small text-muted'>{auth.username}</p>
+					<p className='small text-muted'>{author.username}</p>
 
 					<div className="my-2 mx-2">
 						<button
@@ -68,25 +68,25 @@ export const Article = (props) => {
 				</Card.Body>
 			</Card>
 
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title className='text-info'>Actualizar el {article.title} </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <ArticleUpdate article={article} handleClose={handleClose}/>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className='btn-sm btn btn-primary'>Understood</Button>
-          <Button className='btn-sm btn btn-secondary' onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+			<Modal
+				show={show}
+				onHide={handleClose}
+				backdrop="static"
+				keyboard={false}
+				>
+				<Modal.Header closeButton>
+					<Modal.Title className='text-info'>Actualizar el {article.title} </Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<ArticleUpdate article={article} handleClose={handleClose}/>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button className='btn-sm btn btn-primary'>Entendido</Button>
+					<Button className='btn-sm btn btn-secondary' onClick={handleClose}>
+						Close
+					</Button>
+				</Modal.Footer>
+			</Modal>
 		</Fragment>
 	)
 }

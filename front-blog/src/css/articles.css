@@ -1,0 +1,8 @@
+.article-hover {
+    transition: .4s all ease;
+}
+
+.article-hover:hover {
+    margin-left: 10px;
+    box-shadow: 10px 10px 10px -8px;
+}

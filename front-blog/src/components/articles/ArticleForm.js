@@ -1,37 +1,38 @@
 import React, {Fragment} from 'react'
 import { useForm } from 'react-hook-form'
+import { useParams } from 'react-router-dom'
 
 const API_URL = process.env.REACT_APP_API
 
 export const ArticleForm = (props) => {
-	// Props
-	const { getArticles } = props
+
+	// Params
+	const { author_id } = useParams()
 
 	// Validate Form
 	const { register, handleSubmit, errors} = useForm()
 
 	const onSubmit = async (data, event) => {
 		const token = await document.querySelector('[name=csrf-token]').content;
-		await fetch(`${API_URL}/articles/`,{
+		await fetch(`${API_URL}/authors/${author_id}/articles/`,{
 			credentials: 'same-origin',
+			method:'POST',
 			headers: {
 				'Content-Type':'application/json',
 				'X-CSRF-Token': token,
 				'Accept': 'application/json',
 			},
-			method:'POST',
-			body: JSON.stringify({
-					article: {
-						...data,
-						auth_id: 2
-				}
-			}),
+			body: JSON.stringify({article: {...data}}),
 		});
 
 		await event.target.reset()
 
 		// Render Index Articles
-		await getArticles()
+		if(props.getArticles){
+			await props.getArticles(props.render)
+		} else if (props.getArticleOfAuthor) {
+			await props.getArticleOfAuthor()
+		}
 	}
 
 	 return (
@@ -68,7 +69,7 @@ export const ArticleForm = (props) => {
 						{ errors.body && <span className='small text-danger'>La descripción es obligatoria</span> }
 				</div>
 				<div className="form-group">
-					<input className='btn btn-success' type="submit" value="Enviar el articulo"/>
+					<input className='btn-sm btn btn-success' type="submit" value="Enviar el articulo"/>
 				</div>
       </form>
     </Fragment>

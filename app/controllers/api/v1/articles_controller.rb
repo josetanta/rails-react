@@ -1,9 +1,9 @@
 class Api::V1::ArticlesController < ApplicationController
 	before_action :set_article, only: [:show, :update, :destroy]
-
+	before_action :set_author, only: [ :create, :get_articles_author ]
 	# GET /api/v1/articles
 	def index
-		@articles = Article.pub_created.all
+		@articles = Article.pub_updated.all
 	end
 
 	# GET /api/v1/articles/1
@@ -11,10 +11,15 @@ class Api::V1::ArticlesController < ApplicationController
 		render :show
 	end
 
+	def get_articles_author
+		@articles = @author.articles
+		render :author_articles
+	end
+
+
 	# POST /api/v1/articles
 	def create
-		@article = Article.new(article_params)
-		puts "-----------------------#{@article.valid?}------------------------"
+		@article = @author.articles.new(article_params)
 		if @article.save
 			render json: @article, status: :created
 		else
@@ -37,6 +42,10 @@ class Api::V1::ArticlesController < ApplicationController
 	end
 
 	private
+		def set_author
+			@author = Author.find(params[:author_id])
+		end
+
 		# Use callbacks to share common setup or constraints between actions.
 		def set_article
 			@article = Article.find(params[:id])
@@ -44,6 +53,6 @@ class Api::V1::ArticlesController < ApplicationController
 
 		# Only allow a trusted parameter "white list" through.
 		def article_params
-			params.require(:article).permit(:title, :body, :auth_id)
+			params.require(:article).permit(:title, :body, :author_id)
 		end
 end

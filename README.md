@@ -1,4 +1,4 @@
-# Proyecto Rails con React
+# Proyecto RailsAPI con React
 ### README
 
 This README would normally document whatever steps are necessary to get the
@@ -6,7 +6,9 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.6.6
+
+* Rails version 6.0.3.2
 
 * System dependencies
 
@@ -22,4 +24,3 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...

@@ -14,6 +14,10 @@ import { ArticlesView } from './views/ArticlesView'
 import { AuthorsView } from './views/AuthorsView'
 // END
 
+import './App.css'
+
+
+
 export const App = () => {
 	return (
 		<Fragment>
@@ -26,7 +30,7 @@ export const App = () => {
 							<Article></Article>
 						</Route>
 
-						<Route path='/auths/:author_id'>
+						<Route path='/authors/:author_id'>
 							<Author></Author>
 						</Route>
 
@@ -34,7 +38,7 @@ export const App = () => {
 							<ArticlesView></ArticlesView>
 						</Route>
 
-						<Route path='/auths'>
+						<Route path='/authors'>
 							<AuthorsView></AuthorsView>
 						</Route>
 

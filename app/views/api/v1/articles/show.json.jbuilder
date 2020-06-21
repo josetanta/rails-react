@@ -8,9 +8,9 @@ if @article
         json.title @article.title
         json.body @article.body
         json.publishied @article.created_at
-        json.auth do
-          json.name @article.auth.name
-          json.username @article.auth.username
+        json.author do
+          json.name @article.author.name
+          json.email @article.author.email
         end
     end
   end
