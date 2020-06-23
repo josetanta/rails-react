@@ -16,8 +16,6 @@ import { AuthorsView } from './views/AuthorsView'
 
 import './App.css'
 
-
-
 export const App = () => {
 	return (
 		<Fragment>
@@ -50,6 +48,5 @@ export const App = () => {
 				</Container>
 			</BrowserRouter>
 		</Fragment>
-
 	);
 }

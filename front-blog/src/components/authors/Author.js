@@ -23,19 +23,18 @@ export const Author = () => {
 		setAuthorArticles(data.data.articles)
 	}
 
-	const getAuthor = async () => {
-		const res = await fetch(`${API_URL}/authors/${author_id}`,{
-			method: 'GET',
-			headers: {'Content-Type':'application/json'}
-		});
-		const data = await res.json()
-		setAuthor(data.data.author)
-
-	}
 	useEffect(() => {
+		const getAuthor = async () => {
+		const res = await fetch(`${API_URL}/authors/${author_id}`,{
+				method: 'GET',
+				headers: {'Content-Type':'application/json'}
+			});
+			const data = await res.json()
+			setAuthor(data.data.author)
+		}
 		getAuthor()
 		getArticleOfAuthor()
-	},[])
+	},[author_id])
 
 	return (
 		<Fragment>

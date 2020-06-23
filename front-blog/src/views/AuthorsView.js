@@ -1,10 +1,11 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import { Card, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { AuthorForm } from '../components/authors/AuthorForm'
 
 const API_URL = process.env.REACT_APP_API
 
-export const AuthorsView = (props) => {
+export const AuthorsView = () => {
 
 	const [ authors, setAuthors ] = useState([])
 
@@ -50,7 +51,8 @@ export const AuthorsView = (props) => {
 					}
 				</Col>
 				<Col md={5}>
-					<h2>Autores</h2>
+					<h2>Crear un Nuevo Autor</h2>
+					<AuthorForm getAuthors={getAuthors}></AuthorForm>
 				</Col>
 			</Row>
 		</Fragment>
