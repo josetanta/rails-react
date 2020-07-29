@@ -34,7 +34,7 @@ export const Author = () => {
 		}
 		getAuthor()
 		getArticleOfAuthor()
-	},[author_id])
+	},[])
 
 	return (
 		<Fragment>

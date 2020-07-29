@@ -44,6 +44,10 @@ export const App = () => {
 							<HomeView></HomeView>
 						</Route>
 
+						<Route>
+							<h2>404</h2>
+						</Route>
+
 					</Switch>
 				</Container>
 			</BrowserRouter>

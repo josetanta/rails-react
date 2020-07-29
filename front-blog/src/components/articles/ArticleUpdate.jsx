@@ -1,28 +1,28 @@
-import React, {Fragment, useState} from 'react'
-import { Redirect } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import React, {Fragment, useState} from 'react';
+import { Redirect } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
-const API_URL = process.env.REACT_APP_API
+const API_URL = process.env.REACT_APP_API;
 
 export const ArticleUpdate = (props) => {
-	const { register, handleSubmit, errors} = useForm()
+	const { register, handleSubmit, errors} = useForm();
 
-	const [ update, setUpdate ] = useState(false)
+	const [ update, setUpdate ] = useState(false);
 
-	const [ titleUp, setTitleUp ] = useState(props.article.title)
-	const [ bodyUp, setBodyUp ] = useState(props.article.body)
+	const [ titleUp, setTitleUp ] = useState(props.article.title);
+	const [ bodyUp, setBodyUp ] 	= useState(props.article.body);
 
 	const onSubmit = async (data) => {
 		const token = await document.querySelector('[name=csrf-token]').content;
-		await fetch(`${API_URL}/articles/${props.article.id}`,{
-			method: 'PUT',
+		await fetch(`${API_URL}/articles/${props.article.id}/`,{
 			credentials: 'same-origin',
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 				'X-CSRF-Token': token,
 				'Accept': 'application/json',
 			},
-			body: JSON.stringify({article: {...data, author_id: 2}})
+			body: JSON.stringify({article: {...data, author_id: props.article.author.id}})
 		})
 		await props.handleClose(false)
 		setUpdate(true)

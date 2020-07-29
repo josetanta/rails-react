@@ -11,11 +11,11 @@ export const ArticlesView = () => {
 	const getArticles = async () => {
 
 		const res = await fetch(`${API_URL}/articles/`,{
-					method: 'GET',
-					headers: {
-						'Content-Type' :'application/json'
-					}
-				})
+				method: 'GET',
+				headers: {
+					'Content-Type' :'application/json'
+				}
+			})
 			const data = await res.json()
 			setArticles(data.data.articles)
 		}

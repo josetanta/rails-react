@@ -10,7 +10,6 @@
   Author.create(name: "Auth #{num}", email: "author#{num}@mail.com")
 end
 
-
 5.times do |num|
-  Article.create(title: "Article #{num}", body:"This is body of Article #{num}", author_id: rand(3).to_i)
+  Article.create(title: "Article #{num}", body: "This is body of Article #{num}", author_id: rand(3).to_i)
 end

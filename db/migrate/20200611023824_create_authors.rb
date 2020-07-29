@@ -3,7 +3,7 @@ class CreateAuthors < ActiveRecord::Migration[6.0]
     create_table :authors do |t|
       t.string :name
       t.string :username, unique: true
-      t.string :email, 		unique: true
+      t.string :email,	unique: true
 
       t.timestamps
     end

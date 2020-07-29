@@ -1,3 +1,2 @@
-YourAppName::Application.routes.draw  do
-
+YourAppName::Application.routes.draw do
 end

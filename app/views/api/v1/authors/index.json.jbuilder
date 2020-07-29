@@ -1,7 +1,7 @@
 json.data do
   json.meta :authors
-  json.unicode "utf-8"
-  json.headers "application/json"
+  json.unicode 'utf-8'
+  json.headers 'application/json'
   json.authors(@authors) do |author|
     json.id author.id
     json.email author.email
