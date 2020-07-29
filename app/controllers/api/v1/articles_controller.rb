@@ -1,6 +1,6 @@
 class Api::V1::ArticlesController < ApplicationController
   before_action :set_article, only: %i[show update destroy]
-  before_action :set_author, only: %i[create get_articles_author]
+  before_action :set_author, only: %i[create articles_author]
   # GET /api/v1/articles
   def index
     @articles = Article.pub_updated.all
@@ -11,7 +11,7 @@ class Api::V1::ArticlesController < ApplicationController
     render :show
   end
 
-  def get_articles_author
+  def articles_author
     @articles = @author.articles
     render :author_articles
   end

@@ -16,5 +16,5 @@ if @author
   end
 else
   json.status :error
-  json.message "Not Found"
+  json.message 'Not Found'
 end

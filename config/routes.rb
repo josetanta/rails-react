@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       resources :authors, shallow: true do
         resources :articles, except: [:index]
       end
-      get '/authors/:author_id/articles', to: 'articles#get_articles_author'
+      get '/authors/:author_id/articles', to: 'articles#articles_author'
       get '/articles', to: 'articles#index'
     end
   end
